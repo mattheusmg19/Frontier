@@ -235,3 +235,182 @@ nav.menu-lateral.expandir ~ .container{
 .pagina{
     width: 100%;
 }
+
+/* Media query para janelas menores (largura máxima de 1417px)*/
+@media (max-width:1417px) {
+    .container{
+        overflow: auto;
+    }
+
+    .box-search{
+        width: 50%;
+    }
+
+    #pesquisa-nav{
+        margin-left: 30px;
+    }
+}
+
+@media (max-width:1250px) {
+    .box-search{
+        width: 40%;
+    }
+}
+
+@media (max-width:1235px) {
+    .btn-expandir a > img{
+        display: none;
+    }
+}
+/* Media Query para tablets (largura máxima de 768px) */
+@media (max-width: 768px) {
+    body{
+        overflow-y: auto;
+    }
+
+    nav.menu-lateral {
+      width: 70px; /* Ajustar largura da barra lateral */
+    }
+  
+    nav.menu-lateral.expandir {
+      display: none; /* Ajustar largura da barra lateral expandida */
+    }
+  
+    .btn-expandir > i {
+      font-size: 25px; /* Ajustar tamanho do ícone */
+      margin-right: 5px;
+    }
+  
+    .btn-expandir a > img {
+      display: none; /* Ajustar largura da imagem */
+    }
+  
+    .container {
+      left: 80px; /* Ajustar a posição do contêiner */
+    }
+  
+    nav.menu-lateral.expandir ~ .container {
+      left: 20px; /* Ajustar a posição do contêiner com barra lateral expandida */
+    }
+  
+    .box-search {
+      width: 40%; /* Ajustar largura da caixa de pesquisa */
+    }
+  
+    #pesquisa-nav {
+      font-size: 14px; /* Ajustar tamanho da fonte */
+      margin-left: 10px;
+    }
+  }
+
+  @media (max-width:720px) {
+    .box-search{
+        display: none;
+    }
+  }
+  
+  /* Media Query para celulares (largura máxima de 480px) */
+  @media (max-width: 480px) {
+    nav.menu-lateral {
+        display: none;
+        margin: 0;
+        padding: 0;
+        width: 100%; /* Ajustar largura da barra lateral */
+        z-index: 90000;
+        top: 50px;
+        opacity: 0;
+        transition: .5s ease-in-out;
+        background-color: #01012c;
+    }
+  
+    nav.menu-lateral.expandir {
+        display: block;
+        width: 100%; /* Ajustar largura da barra lateral expandida */
+        opacity: 1;
+        transition: .5s ease-in-out;
+    }
+
+    ul li.item-menu a{
+        padding: 10px 4%;
+        margin-bottom: 10px;
+    }
+
+    ul li.item-menu a span, ul li.item-menu a span.icon i{
+        font-size: 20px;
+    }
+
+    ul li.item-menu a .txt-link{
+        margin-left: 10px;
+    }
+
+    nav.menu-lateral.expandir .txt-link{
+        margin-left: 20px;
+    }
+
+    ul li.item-menu a span.icon i{
+        margin-left: 8px;
+    }
+
+    .btn-expandir{
+        height: 80px;
+    }
+  
+    .btn-expandir > i {
+      font-size: 20px; /* Ajustar tamanho do ícone */
+      margin-left: 5px;
+      margin-top: 30px;
+      margin-right: 0;
+    }
+  
+    .btn-expandir h2{
+        margin-top: 35px;
+        font-size: 20px;
+    }
+
+    .btn-expandir img.logoFrontier{
+        width: 45px;
+        padding-left: 10px;
+        margin-top: 25px;
+    }
+
+    .btn-expandir div.control{
+        top: 40px;
+        right: 10px;
+    }
+  
+    .container {
+        left: 0; /* Ajustar a posição do contêiner */
+        right: 0;
+        top: 53px;
+        overflow: auto;
+        margin: 0;
+        padding: 25px;
+    }
+
+    .container .pagina h1{
+        margin-top: -25px;
+    }
+  
+    nav.menu-lateral.expandir ~ .container {
+        left: 0; /* Ajustar a posição do contêiner com barra lateral expandida */
+    }
+  
+    .box-search {
+        display: none;
+    }
+
+    .btn-expandir .control{
+        margin: 0;
+    }
+
+    #notification, #user{
+        margin-top: 10px;
+        font-size: 20px;
+    }
+
+    #notification-count{
+        top: 8px;
+        right: 46px;
+        font-size: 8px;
+    }
+  }
