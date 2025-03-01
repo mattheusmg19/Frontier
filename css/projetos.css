@@ -1,0 +1,29 @@
+.pagina #cabeca{
+    display: flex;
+    justify-content: space-between;
+    line-height: 40px;
+}
+
+i.bi-behance{
+    font-size: 20px;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background-color: #F7B40D;
+    cursor: pointer;
+    color: white;
+}
+
+.iframes{
+    margin-top: 20px;
+    overflow-y: auto;
+    height: 75vh;
+    border-radius: 10px;
+}
+
+.iframes iframe{
+    width: 350px;
+    height: 300px;
+    margin: 0 10px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+}

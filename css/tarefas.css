@@ -1,0 +1,109 @@
+.inputs{
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+    background-color: #0f0f41;
+    width: 25%;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.inputs h5{
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.inputs input, textarea{
+    background-color: #2a2a5d;
+    border: none;
+    margin-bottom: 10px;
+    width: 95%;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    color: white;
+}
+
+.inputs input{
+    height: 40px;
+}
+
+.inputs textarea{
+    height: 100px;
+    resize: none;
+}
+
+#add-task{
+    background-color: #f8b50e;
+    border: none;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width: 95%;
+}
+
+#clear-tasks{
+    background-color: #f8b50e;
+    border: none;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    width: 95%;    
+}
+
+button{
+    cursor: pointer;
+}
+
+.cards{
+    display: flex;
+    margin-top: 20px;
+}
+
+.status{
+    width: 35%;
+    margin: 0 10px;
+    background-color: #0f0f41;
+    padding: 20px;
+    max-height: 75vh;
+    border-radius: 10px;
+    height: 75vh;
+}
+
+.status div{
+    margin-bottom: 20px;
+}
+
+.item-status{
+    margin-top: 10px;
+}
+
+.status h2{
+    font-size: 20px;
+    text-align: center;
+}
+
+.toggle-btn{
+    background-color: #f8b50e;
+    color: white;
+    margin-top: 10px;
+    border: none;
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.delete-btn{
+    background-color: #f8b50e;
+    color: white;
+    margin-top: 10px;
+    border: none;
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+

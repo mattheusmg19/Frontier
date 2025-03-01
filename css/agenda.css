@@ -1,0 +1,165 @@
+.containere {
+    display: flex;
+    justify-content: center; /* Espaço entre o calendário e os cards */
+    align-items: flex-start;
+    gap: 20px;
+    height: 100%;
+}
+
+.calendar {
+    width: 1000px;
+    height: 73.5vh;
+    background: #0f0f41;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-top: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    color: white;
+}
+
+button {
+    background: #F8B50E;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.weekdays{
+    margin-bottom: 20px;
+}
+
+.weekdays, .days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+.weekdays div {
+    font-weight: bold;
+    color: white;
+}
+
+.days div {
+    padding: 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 25px;
+}
+
+.days div:hover {
+    background: #59BDF1;
+    color: white;
+}
+
+.days div:active{
+    background-color: #F7B40D;
+}
+
+.days > .today {
+    background-color: #F7B40D;
+    color: white;
+}
+
+#prevYear, #nextYear{
+    background-color: #59BDF1;
+}
+
+/* --------- Estilo para o Container da Agenda e Compromissos --------- */
+.agenda-container {
+    display: flex;
+    flex-direction: column;  /* Coloca os cards um abaixo do outro */
+    gap: 20px; /* Espaço entre os cards */
+    width: 400px;  /* Limita a largura total do container dos cards */
+    margin-top: 20px;
+}
+
+/* --------- Estilo para a Agenda --------- */
+.agenda {
+    width: 100%;
+    background: #0f0f41;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.agenda h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+#newAppointment {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    background-color: #2a2a5d;
+    color: white;
+}
+
+/* --------- Estilo para a Lista de Compromissos --------- */
+.commitments {
+    width: 100%;
+    background: #0f0f41;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    height: 54.4vh;
+    overflow: auto;
+}
+
+.commitments h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+#appointments {
+    list-style: none;
+    padding: 0;
+}
+
+#appointments li {
+    background: #1b1b4d;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+#appointments li:hover {
+    background: #2a2a5d;
+}
+
+/* Botão de excluir com ícone de lixeira */
+.delete-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #F8B50E;
+    transition: 0.3s;
+}
+
+.delete-btn:hover {
+    color: #d99a0b;
+}

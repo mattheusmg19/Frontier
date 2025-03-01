@@ -1,0 +1,202 @@
+.card-container {
+    display: flex;
+    justify-content: left;
+    gap: 20px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+h5{
+    margin-bottom: -5px;
+    text-align: left;
+}
+
+
+input {
+    width: 200px;
+    padding: 8px;
+    margin-top: 10px;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    background-color: #2a2a5d;
+}
+
+select {
+    width: 90px;
+    padding: 8px;
+    margin-top: 10px;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    background-color: #2a2a5d;
+}
+
+button {
+    width: 90px;
+    padding: 6px 10px;
+    background: #F7B40D;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-top: 10px;
+    line-height: 21px;
+}
+
+.ajuste{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.filters{
+    background-color: #0f0f41;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.filters h3{
+    margin-bottom: 10px;
+}
+
+.filters div{
+    display: flex;
+    justify-content: right;
+    gap: 15px;
+}
+
+.filters .tFilter{
+    display: flex;
+    justify-content: space-between;
+}
+
+.limparFiltros i{
+    font-size: 15px;
+    padding: 8px;
+    background-color: #F7B40D;
+    border-radius: 5px;
+    cursor: pointer;
+    line-height: 18px;
+}
+
+.input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-container #filtro-descricao {
+    width: 100%;
+    padding: 8px 35px 8px 8px; /* Espaço à esquerda para o ícone */
+    border-radius: 5px;
+}
+
+.input-container .bi-search {
+    position: absolute;
+    top: 15px;
+    right: 10px; /* Ajuste a posição do ícone */
+    color: white;
+    font-size: 16px;
+}
+
+#transacao-form{
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: left;
+    gap: 20px;
+}
+
+.card {
+    background: #0f0f41;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.card h3{
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.saldo {
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.tabela{
+    margin-top: 20px;
+    border-radius: 10px;
+    height: 56vh;
+    overflow: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+}
+td {
+    background: #2a2a5d;
+    border: solid 4px #01012c;
+    border-radius: 10px;
+    padding: 0;
+    text-align: center;
+}
+th {
+    background: #0f0f41;
+    border: solid 4px #01012c;
+    padding: 5px;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+}
+#icone{
+    width: 3%;
+}
+
+#desc{
+    width: 50%;
+}
+
+#value{
+    width: 8%;
+}
+
+#type{
+    width: 8%;
+}
+
+#date{
+    width: 15%;
+}
+
+#remove{
+    width: 5%;
+}
+
+.text-success {
+    color: green;
+}
+.text-danger {
+    color: red;
+}
+.text-default{
+    color: #F7B40D;
+}
+.btn-delete {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 18px;
+    line-height: 5px;
+    margin: 2px;
+}
+
+#none{
+    color: #01012c;
+}

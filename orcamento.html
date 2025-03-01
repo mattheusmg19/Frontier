@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontier</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/estructure.css">
+    <link rel="stylesheet" href="css/orcamento.css">
+    <link rel="stylesheet" href="css/frontier.css">
+    <link rel="stylesheet" href="css/notification.css">
+    <link rel="stylesheet" href="css/user.css">
+    <link rel="icon" href="img/Logosolo png.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+</head>
+<body>
+    <div id="notification-container">
+        <h3>Notificações</h3>
+        <ul id="notification-list"></ul>
+    </div>
+
+        <!-- Modal usuário -->
+        <div id="userModal" class="modalUser">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Dados do Usuário</h2>
+                <p><strong>Nome:</strong> <span id="modalNome"></span></p>
+                <p><strong>Cargo:</strong> <span id="modalCargo"></span></p>
+                <button id="btn-sair"><a href="index.html"><i class="bi bi-box-arrow-right"></i>  Sair</a></button>
+            </div>
+        </div>    
+
+    <div class="btn-expandir">
+        <i class="bi bi-list" id="btn-exp"></i>
+        <a href="#"><img src="img/Logo lado png.png"></a>
+        <img src="img/logo frontier.png" width="50px" class="logoFrontier">
+        <h2 class="frontier" id="frontier"><span>Front</span>ier<span id="tm">™</span></h2>
+        <!--barra de pesquisas geral-->
+        <div class="box-search">
+            <i class="bi bi-search"></i>
+            <input type="text" id="pesquisa-nav" placeholder="Pesquisar">
+        </div>
+        <!--/barra de pesquisas geral/-->
+        <div class="control">
+            <i class="bi bi-bell" id="notification"><span id="notification-count" class="notification-badge">0</span></i>
+            <i class="bi bi-person-circle" id="user"></i>
+        </div>
+    </div><!--btn-expandir-->
+    <nav class="menu-lateral">
+        
+
+        <ul>
+            <li class="item-menu">
+                <a href="home.html">
+                    <span class="icon"><i class="bi bi-house"></i></span>
+                    <span class="txt-link">Home</span>
+                </a>
+            </li><!--item-menu-->
+            <li class="item-menu">
+                <a href="agenda.html">
+                    <span class="icon"><i class="bi bi-calendar3"></i></span>
+                    <span class="txt-link">Agenda</span>
+                </a>
+            </li><!--item-menu-->
+            <li class="item-menu">
+                <a href="tarefas.html">
+                    <span class="icon"><i class="bi bi-card-checklist"></i></span>
+                    <span class="txt-link">Tarefas</span>
+                </a>
+            </li><!--item-menu-->
+            <li class="item-menu ativo">
+                <a href="#">
+                    <span class="icon"><i class="bi bi-cash-coin"></i></span>
+                    <span class="txt-link">Orçamento</span>
+                </a>
+            </li><!--item-menu-->
+            <li class="item-menu">
+                <a href="carteira.html">
+                    <span class="icon"><i class="bi bi-wallet"></i></span>
+                    <span class="txt-link">Carteira</span>
+                </a>
+            </li><!--item-menu-->
+            <li class="item-menu">
+                <a href="clientes.html">
+                    <span class="icon"><i class="bi bi-people"></i></span>
+                    <span class="txt-link">Clientes</span>
+                </a>
+            </li><!--item-menu-->
+            <li class="item-menu">
+                <a href="projetos.html">
+                    <span class="icon"><i class="bi bi-folder-plus"></i></span>
+                    <span class="txt-link">Projetos</span>
+                </a>
+            </li><!--item-menu-->
+        </ul>
+    </nav><!--menu-lateral-->
+
+    <div class="overlay" id="overlay"></div>
+    <div class="popup" id="popup">
+        <span class="close-btn" id="closePopup"><i class="bi bi-x-circle"></i></span>
+        <div id="popup-content">Carregando...</div>
+    </div>
+
+    <main class="container content">
+        <div class="pagina">
+            <h1>Orçamentos</h1>
+            <div class="box-box">
+                <div class="box">        
+                    
+                    <div class="section " id="config">
+                        <h2>Dados do Cliente</h2>
+                        <label><h5>Nome: </h5><input type="text" id="clienteNome" placeholder="Ex: Matheus Mesquita"></label>
+                        <label for="cpf"><h5>CPF: </h5><input type="text" id="cpf" placeholder="Digite o CPF"></label>
+                        <label><h5>Telefone: </h5><input type="tel" id="clienteTelefone" placeholder="Ex: (xx) x xxxx-xxxx"></label>
+                        <label><h5>Email: </h5><input type="email" id="clienteEmail" placeholder="Ex: mattheus@designer.com"></label>
+                        <label><h5>Endereço: </h5><input type="text" id="endereco" placeholder="Localização"></label>
+                        <label for="cidade"><h5>Cidade: </h5>
+                            <input list="lista-cidades" id="cidade" placeholder="Digite sua Cidade">
+                            <datalist id="lista-cidades"></datalist>
+                        </label>
+                        <label><h5>Estado: </h5>
+                            <input type="text" id="estado" placeholder="Selecione um Estado" readonly>
+                        </label>
+                        <label class="title-label"><h5>Forma de Pagamento:</h5> 
+                            <select id="formaPagamento" aria-placeholder="Forma de pagamento">
+                                <option>Dinheiro</option>
+                                <option>Transf. Bancária</option>
+                                <option>Boleto</option>
+                                <option>Cartão Débito</option>
+                                <option>Cartão Crédito</option>
+                                <option>PIX</option>
+                            </select>
+                        </label>
+                        <img src="img/Logo branco svg.svg" alt="" id="logo-print">
+                    </div>
+                </div>
+                
+                <div class="section box" id="detalhes">
+                    <div class="section" id="config">
+                        <h2>Configuração</h2>
+                        <label class="title-label"><h5>Valor da Hora (R$): </h5><input type="number" id="valorHora" value="31.25" step="0.01"></label>
+                    </div>
+                    <hr>
+                    <h2 class="unico">Detalhes do Trabalho</h2>
+                    <label class="title-label"><h5>Descrição: </h5>
+                        <select id="descricao">
+                            <option>Identidade Visual</option>
+                            <option>Cartão de visitas</option>
+                            <option>Rede social</option>
+                            <option>Logotipo</option>
+                            <option>Banner</option>
+                        </select>
+                    
+                    </label>
+                    <label><h5>Quantidade: </h5><input type="number" id="quantidade" min="1" placeholder="Ex: 1 (item)"></label>
+                    <label>
+                        <h5>Tempo Trabalhado: </h5>
+                        <input type="number" id="tempo" min="0" step="1" placeholder="Ex: 2 (horas)">
+                        <h5>Formato do tempo:</h5>
+                        <select id="unidadeTempo">
+                            <option value="hora">Horas</option>
+                            <option value="minuto">Minutos</option>
+                        </select>
+                    </label>
+                    <button onclick="adicionarJob()" id="adc-job">Adicionar Job</button>
+                </div>
+                <div class="box" id="table">
+                    <h2>Histórico de Trabalhos</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th id="desc">Descrição</th>
+                                <th id="qntd">Qt.</th>
+                                <th id="time">Tempo</th>
+                                <th id="value">Valor</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabelaOrcamento" class="tbody"></tbody>
+                    </table>
+                            
+                </div>
+            </div>    
+            <div class="rodapés">
+                <button onclick="imprimirOrcamento()" class="imprimir"><i class="bi bi-printer-fill"></i>  Imprimir Orçamento</button>
+                <button onclick="gerarPDF()" class="PDF"><i class="bi bi-file-earmark-pdf-fill"></i>  Gerar PDF</button>
+                <button onclick="gerarImagem()" class="IMG"><i class="bi bi-image-fill"></i>  Gerar Imagem</button>
+                <button onclick="limparTudo()" class="limparTudo"><i class="bi bi-trash3-fill"></i>  Limpar tudo</button>
+                <button id="dataH"><i class="bi bi-hourglass-split"></i>  <span id="online"></span></button>
+                <button id="total-table"><h3><i class="bi bi-piggy-bank-fill"></i>  Total: <strong>R$</strong> <span id="totalOrcamento">0,00</span></h3></button>
+            </div>
+        </div>
+    </main>
+    <script>
+        //imprimir
+        function imprimirOrcamento() {
+            window.print();
+        }
+    
+        //gerar pdf
+        async function gerarPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF({ orientation: "landscape" }); // Força a orientação vertical
+    
+            let elemento = document.querySelector('.container');
+    
+            html2canvas(elemento, { scale: 2 }).then(canvas => {
+                let imgData = canvas.toDataURL('image/png');
+                let imgWidth = 190; // Largura ajustada para A4
+                let imgHeight = (canvas.height * imgWidth) / canvas.width; // Mantém a proporção
+                
+                doc.addImage(imgData, 'PNG', 10, 10, imgWidth, imgHeight);
+                doc.save("orçamento.pdf");
+            });
+        }
+
+        //gerar img
+        function gerarImagem() {
+            // Captura o conteúdo da página inteira (ou de um div específico)
+            html2canvas(document.body).then(function(canvas) {
+                // Converte o conteúdo capturado para imagem em formato PNG
+                const imagem = canvas.toDataURL("image/png");
+
+                // Cria um link para o download da imagem
+                const link = document.createElement("a");
+                link.href = imagem;
+                link.download = "orçamento.png";
+                link.click();
+            });
+        }
+
+        //formato cpf
+        document.getElementById("cpf").addEventListener("input", function(event) {
+            let cpf = event.target.value;
+
+            // Remover tudo que não seja número
+            cpf = cpf.replace(/\D/g, "");
+
+            // Limitar a 11 caracteres numéricos
+            if (cpf.length > 11) {
+                cpf = cpf.slice(0, 11);
+            }
+
+            // Adicionar a máscara
+            if (cpf.length <= 11) {
+                cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2");
+                cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2");
+                cpf = cpf.replace(/(\d{3})(\d{2})$/, "$1-$2");
+            }
+
+            // Atualizar o valor do campo
+            event.target.value = cpf;
+        });
+
+        //data e hora
+        function mostrarDataHora() {
+            let data = new Date();
+            
+            // Formatar a data e hora
+            let dataFormatada = data.toLocaleString(); // Ex: 17/02/2025 15:30:00
+            
+            // Inserir no <span>
+            document.getElementById("online").textContent = dataFormatada;
+        }
+
+        // Atualizar a data e hora a cada segundo
+        setInterval(mostrarDataHora, 1000);
+
+        //carregamento de estados e cidades
+        async function carregarCidades() {
+        const url = "https://servicodados.ibge.gov.br/api/v1/localidades/municipios";
+        
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+
+            // Obtendo elementos do DOM
+            const datalist = document.getElementById("lista-cidades");
+            const cidadeInput = document.getElementById("cidade");
+            const estadoInput = document.getElementById("estado");
+
+            // Ordenar cidades alfabeticamente
+            data.sort((a, b) => a.nome.localeCompare(b.nome));
+
+            // Preencher o datalist de cidades
+            data.forEach(({ nome, microrregiao }) => {
+            let option = document.createElement("option");
+            option.value = nome;
+            option.dataset.estado = microrregiao.mesorregiao.UF.sigla; // Estado
+            datalist.appendChild(option);
+            });
+
+            // Evento para preencher o estado automaticamente ao digitar
+            cidadeInput.addEventListener("input", function () {
+            const optionSelecionada = [...datalist.options].find(option => option.value === cidadeInput.value);
+            estadoInput.value = optionSelecionada ? optionSelecionada.dataset.estado : "";
+            });
+
+        } catch (error) {
+            console.error("Erro ao carregar cidades:", error);
+        }
+        }
+
+        // Chamar função para carregar as cidades ao iniciar
+        carregarCidades();
+    </script>
+    
+    <script src="js/orcamento.js" type="module"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/frontier.js"></script>
+    <script src="js/notification.js"></script>
+    <script src="js/user.js"></script>
+</body>
+</html>

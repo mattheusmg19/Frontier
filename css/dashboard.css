@@ -1,0 +1,78 @@
+.pagina{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    color: white;
+}
+
+/* Cabeçalho */
+h1 {
+    margin-bottom: 30px;
+    font-size: 28px;
+}
+
+/* Contêiner dos Cards */
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Estilo de Título dentro do Card */
+.card h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: white;
+}
+
+/* Estilo dos Cards */
+.card {
+    background-color: #0f0f41;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Ajuste para os gráficos dentro dos cards */
+.card canvas {
+    max-width: 100%; /* Para garantir que o gráfico ocupe a largura total do card */
+    width: 100%;
+}
+
+/* Ajuste específico para gráficos de Radar e Doughnut */
+#ratingsChart{
+    height: 90%; /* Ajuste de altura para o gráfico de Radar e Doughnut */
+    max-width: 150%; /* Limita a largura para que o gráfico fique proporcional */
+    width: 150%;
+}
+
+/* Para os gráficos de Barra e Linha, ajuste de altura */
+#projectsChart, #earningsChart, #financeChart , #tasksChart, #ratingsChart, #hoursChart {
+    height: 95%; /* Ajuste de altura para os gráficos de Barra e Linha */
+    max-width: 155%;
+    width: 155%;
+}
+
+/* Responsividade - Quando a tela for menor que 768px, 2 cards por linha */
+@media (max-width: 768px) {
+    .card {
+        flex: 1 1 calc(50% - 20px); /* 2 cards por linha */
+        max-width: 50%;
+    }
+}
+
+/* Responsividade - Quando a tela for menor que 480px, 1 card por linha */
+@media (max-width: 480px) {
+    .card {
+        flex: 1 1 100%; /* 1 card por linha */
+        max-width: 100%;
+    }
+}

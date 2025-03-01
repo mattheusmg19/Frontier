@@ -1,0 +1,101 @@
+
+/*logo frontier*/
+.btn-expandir .logoFrontier{
+    margin-top: 20px;
+    padding-left: 20px;
+    width: 70px;
+    border-left: solid 1px #2a2a5d;
+    cursor: pointer;
+}
+
+.frontier{
+    color: #59BDF1;
+    margin: 10px;
+    margin-top: 30px;
+    font-size: 35px;
+    cursor: pointer;
+}
+
+.frontier span{
+    color: #F7B40D;
+}
+
+#tm{
+    color: #59BDF1;
+    font-size: 15px;
+}
+
+
+
+/*modal frontier*/
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #0f0f41;
+    color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    z-index: 1000;
+    width: 500px;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.popup p{
+    text-align: justify;
+    font-size: 13px;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+}
+.close-btn {
+    cursor: pointer;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    float: right;
+    transition: .3s;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.close-btn:hover{
+    color: red;
+}
+
+.show {
+    display: block;
+    opacity: 1;
+}
+
+.img-frontier{
+    width: 100%;
+    padding: 20px 0 ;
+}
+
+p strong{
+    color: #F7B40D;
+}
+
+p strong span{
+    color: #59BDF1;
+}
+
+.mattDe{
+    color: white;
+}

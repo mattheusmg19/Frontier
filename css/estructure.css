@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+/* Barra de rolagem */
+::-webkit-scrollbar {
+    width: 8px; /* Largura da barra de rolagem */
+    height: 8px; /* Altura da barra de rolagem horizontal */
+  }
+  
+  /* Track (trilha da barra de rolagem) */
+  ::-webkit-scrollbar-track {
+    background: #0f0f41; /* Cor de fundo da trilha */
+    border-radius: 10px; /* Arredondar os cantos */
+  }
+  
+  /* Handle (a parte que o usuário arrasta) */
+  ::-webkit-scrollbar-thumb {
+    background: #1b1b4d; /* Cor do "polegar" (a parte que você arrasta) */
+    border-radius: 10px; /* Arredondar os cantos do "polegar" */
+  }
+  
+  /* Quando o usuário passa o mouse sobre o handle */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #2a2a5d; /* Mudar a cor do "polegar" quando o mouse passar por cima */
+  }
+
+/* Remove as setas no Chrome, Safari e Edge */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Altera a cor do ícone do calendário no Chrome, Safari e Edge */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(100%) hue-rotate(180deg);
+    cursor: pointer;
+    font-size: 18px;
+    padding: 0;
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+button{
+    background-color: #F7B40D;
+    transition: .3s;
+}
+
+button:hover{
+    background-color: #d39802;
+}
+
+::selection {
+    background-color: #F7B40D; /* Cor de fundo ao selecionar */
+    color: #01012c; /* Cor do texto ao selecionar */
+}
+
+hr{
+    width: 100%;
+    border: solid 1px #2a2a5d;
+}
+
+body{
+    height: 100vh;
+    background-color: #01012c;
+    user-select: none;
+}
+
+nav.menu-lateral{
+    width: 80px;
+    height: 100%;
+    background-color: #01012c; /*cor padrão do sistema*/
+    padding: 40px 0 40px 1%;
+    transition: .5s;
+
+    position: fixed;
+    top: 80px;
+    left: 0;
+    overflow: hidden;
+}
+
+nav.menu-lateral.expandir{
+    width: 300px;
+}
+
+.btn-expandir{
+    width: 100%;
+    height: 110px;
+    position: fixed;
+    top: -30px;
+    left: 0;
+    display: flex;
+    align-items: center;
+    background-color: #01012c; /*cor padrão do sistema*/
+}
+
+.btn-expandir > i{
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    margin-left: 20px;
+    margin-top: 30px;
+    transition: .2s;
+    padding: 5px 10px;
+    border-radius: 30px;
+}
+
+.btn-expandir > i:active{
+    background-color: rgba(15, 15, 65, 0.8);
+}
+
+.btn-expandir a > img{
+    width: 140px;
+    margin-left: 40px;
+    margin-top: 30px;
+    margin-right: 10px;
+}
+
+input:focus{
+    outline: solid 1px #01012c;
+}
+
+.box-search{
+    width: 55%;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+#pesquisa-nav{
+    width: 100%;
+    line-height: 30px;
+    margin-top: 20px;
+    margin-left: 180px;
+    border-radius: 40px;
+    border: 2px solid #2a2a5d;
+    background-color: #01012c;
+    padding: 5px 70px 5px 20px; /* Espaço à esquerda para o ícone */
+    color: white;
+    font-size: 16px;
+}
+
+.box-search i{
+    position: absolute;
+    top: 22px;
+    right: 1px; /* Ajuste a posição do ícone */
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #2a2a5d;
+    padding: 10px 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.btn-expandir div.control{
+    position: absolute;
+    right: 30px;
+    top: 50px;
+}
+
+.btn-expandir div.control > i{
+    color: white;
+    font-size: 25px;
+    padding: 0 10px;
+    cursor: pointer;
+}
+
+ul{
+    height: 100%;
+    list-style-type: none;
+}
+
+ul li.item-menu{
+    transition: .3s;
+}
+
+ul li.ativo{
+    background-color: #F7B40D;
+}
+
+ul li.item-menu:hover{
+    background-color: #F7B40D;
+}
+
+ul li.item-menu a{
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 20px 4%;
+    display: flex;
+    margin-bottom: 20px;
+    line-height: 40px;
+}
+
+ul li.item-menu a .txt-link{
+    margin-left: 80px;
+    opacity: 0;
+    transition: .5s;
+}
+
+nav.menu-lateral.expandir .txt-link{
+    margin-left: 40px;
+    opacity: 1;
+}
+
+ul li.item-menu a .icon > i{
+    font-size: 30px;
+    margin-left: 12px;
+}
+
+/*conteúdo da página*/
+.container{
+    position: absolute;
+    top: 80px;
+    left: 100px;
+    right: 20px;
+    bottom: 0;
+    padding: 20px;
+    overflow: hidden;
+    transition: .5s;
+
+    color: white;
+}
+
+nav.menu-lateral.expandir ~ .container{
+    left: 320px;
+}
+
+.pagina{
+    width: 100%;
+}

@@ -1,0 +1,274 @@
+    <!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontier</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/estructure.css">
+    <link rel="stylesheet" href="css/agenda.css">
+    <link rel="stylesheet" href="css/frontier.css">
+    <link rel="stylesheet" href="css/notification.css">
+    <link rel="stylesheet" href="css/user.css">
+    <link rel="icon" href="img/Logosolo png.png">
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
+        import { getFirestore, collection, addDoc, onSnapshot, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBS7WKdZBo7GHH1ZV65Ie_eTpbrGK46BS0",
+            authDomain: "teste-491ef.firebaseapp.com",
+            projectId: "teste-491ef",
+            storageBucket: "teste-491ef.appspot.com",
+            messagingSenderId: "182969624474",
+            appId: "1:182969624474:web:2e38ebea2965e1ca3b3c23"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+
+        let selectedDate = "";
+
+        // Função para adicionar compromissos
+        window.addAppointment = async function() {
+            const appointmentInput = document.getElementById('newAppointment').value;
+
+            if (appointmentInput && selectedDate) {
+                await addDoc(collection(db, 'appointments'), {
+                    date: selectedDate,
+                    text: appointmentInput,
+                    timestamp: new Date()
+                });
+                document.getElementById('newAppointment').value = ''; // Limpar o campo
+            }
+        }
+
+        // Função para excluir compromisso
+        window.deleteAppointment = async function(id) {
+            await deleteDoc(doc(db, 'appointments', id));
+        }
+
+        // Função para carregar compromissos do Firebase
+        function getAppointments() {
+            const appointmentsList = document.getElementById('appointments');
+            if (!selectedDate) return;
+
+            onSnapshot(collection(db, 'appointments'), (snapshot) => {
+                appointmentsList.innerHTML = '';
+                snapshot.forEach((doc) => {
+                    if (doc.data().date === selectedDate) {
+                        const appointmentItem = document.createElement('li');
+                        appointmentItem.textContent = doc.data().text;
+
+                        const deleteButton = document.createElement('button');
+                        deleteButton.innerText = "Excluir";
+                        deleteButton.classList.add('delete-btn');
+                        deleteButton.onclick = () => deleteAppointment(doc.id);
+
+                        appointmentItem.appendChild(deleteButton);
+                        appointmentsList.appendChild(appointmentItem);
+                    }
+                });
+            });
+        }
+
+        // Função para renderizar o calendário
+        function renderCalendar() {
+            const currentDate = new Date();
+            const year = currentDate.getFullYear();
+            const month = currentDate.getMonth();
+
+
+            const firstDayOfMonth = new Date(year, month, 1).getDay();
+            const lastDateOfMonth = new Date(year, month + 1, 0).getDate();
+
+            const monthNames = [
+                "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+                "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+            ];
+
+            document.getElementById("monthYear").innerText = `${monthNames[month]} ${year}`;
+            const daysContainer = document.querySelector(".days");
+            daysContainer.innerHTML = "";
+
+            // Preencher com dias do mês
+            for (let i = 0; i < firstDayOfMonth; i++) {
+                const emptyDiv = document.createElement("div");
+                daysContainer.appendChild(emptyDiv);
+            }
+
+            for (let day = 1; day <= lastDateOfMonth; day++) {
+                const dayElement = document.createElement("div");
+                dayElement.innerText = day;
+
+                // Marca o dia atual
+                if (day === currentDate.getDate() && month === currentDate.getMonth() && year === currentDate.getFullYear()) {
+                    dayElement.classList.add("today");
+                }
+
+                // Adiciona evento para seleção de data
+                dayElement.addEventListener("click", () => {
+                    selectedDate = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                    document.getElementById("selectedDate").innerText = `${day} de ${monthNames[month]} de ${year}`;
+                    getAppointments();
+                });
+
+                daysContainer.appendChild(dayElement);
+            }
+        }
+
+        // Navegação entre meses
+        document.getElementById("prevMonth").addEventListener("click", () => {
+            const currentDate = new Date(selectedDate);
+            currentDate.setMonth(currentDate.getMonth() - 1);
+            renderCalendar();
+        });
+
+        document.getElementById("nextMonth").addEventListener("click", () => {
+            const currentDate = new Date(selectedDate);
+            currentDate.setMonth(currentDate.getMonth() + 1);
+            renderCalendar();
+        });
+
+        // Carregar a agenda quando a página carregar
+        window.addEventListener("load", () => {
+            renderCalendar();
+            const todayDate = `${new Date().getFullYear()}-${String(new Date().getMonth() + 1).padStart(2, '0')}-${String(new Date().getDate()).padStart(2, '0')}`;
+            selectedDate = todayDate;  // Definindo a data selecionada como o dia atual
+            document.getElementById("selectedDate").innerText = `${new Date().getDate()} de ${new Date().toLocaleString('pt-BR', { month: 'long' })} de ${new Date().getFullYear()}`;
+            getAppointments();  // Carregar compromissos do dia atual
+        });
+    </script>
+</head>
+<body>
+    <div id="notification-container">
+        <h3>Notificações</h3>
+        <ul id="notification-list"></ul>
+    </div>
+    
+    <!-- Modal usuário -->
+    <div id="userModal" class="modalUser">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Dados do Usuário</h2>
+            <p><strong>Nome:</strong> <span id="modalNome"></span></p>
+            <p><strong>Cargo:</strong> <span id="modalCargo"></span></p>
+            <button id="btn-sair"><a href="index.html"><i class="bi bi-box-arrow-right"></i>  Sair</a></button>
+        </div>
+    </div>
+
+    <div class="btn-expandir">
+        <i class="bi bi-list" id="btn-exp"></i>
+        <a href="#"><img src="img/Logo lado png.png"></a>
+        <img src="img/logo frontier.png" width="50px" class="logoFrontier">
+        <h2 class="frontier" id="frontier"><span>Front</span>ier<span id="tm">™</span></h2>
+        <!--barra de pesquisas geral-->
+        <div class="box-search">
+            <i class="bi bi-search"></i>
+            <input type="text" id="pesquisa-nav" placeholder="Pesquisar">
+        </div>
+        <!--/barra de pesquisas geral/-->
+        <div class="control">
+            <i class="bi bi-bell" id="notification"><span id="notification-count" class="notification-badge">0</span></i>
+            <i class="bi bi-person-circle" id="user"></i>
+        </div>
+    </div><!--btn-expandir-->
+    <nav class="menu-lateral">
+        
+
+        <ul>
+            <li class="item-menu">
+                <a href="home.html">
+                    <span class="icon"><i class="bi bi-house"></i></span>
+                    <span class="txt-link">Home</span>
+                </a>
+            </li><!--item-menu-->
+            <li class="item-menu ativo">
+                <a href="#">
+                    <span class="icon"><i class="bi bi-calendar3"></i></span>
+                    <span class="txt-link">Agenda</span>
+                </a>
+            </li><!--item-menu-->
+            <li class="item-menu">
+                <a href="tarefas.html">
+                    <span class="icon"><i class="bi bi-card-checklist"></i></span>
+                    <span class="txt-link">Tarefas</span>
+                </a>
+            </li><!--item-menu-->
+            <li class="item-menu">
+                <a href="orcamento.html">
+                    <span class="icon"><i class="bi bi-cash-coin"></i></span>
+                    <span class="txt-link">Orçamento</span>
+                </a>
+            </li><!--item-menu-->
+            <li class="item-menu">
+                <a href="carteira.html">
+                    <span class="icon"><i class="bi bi-wallet"></i></span>
+                    <span class="txt-link">Carteira</span>
+                </a>
+            </li><!--item-menu-->
+            <li class="item-menu">
+                <a href="clientes.html">
+                    <span class="icon"><i class="bi bi-people"></i></span>
+                    <span class="txt-link">Clientes</span>
+                </a>
+            </li><!--item-menu-->
+            <li class="item-menu">
+                <a href="projetos.html">
+                    <span class="icon"><i class="bi bi-folder-plus"></i></span>
+                    <span class="txt-link">Projetos</span>
+                </a>
+            </li><!--item-menu-->
+        </ul>
+    </nav><!--menu-lateral-->
+
+    <div class="overlay" id="overlay"></div>
+    <div class="popup" id="popup">
+        <span class="close-btn" id="closePopup"><i class="bi bi-x-circle"></i></span>
+        <div id="popup-content">Carregando...</div>
+    </div>
+
+    <main class="container content">
+        <div class="pagina">
+        <h1>Agenda</h1>
+        <div class="containere">
+            <div class="calendar">
+                <div class="header">
+                    <button id="prevYear"><i class="bi bi-caret-left-fill"></i></button>
+                    <button id="prevMonth"><i class="bi bi-caret-left"></i></button>
+                    <h2 id="monthYear"></h2>
+                    <button id="nextMonth"><i class="bi bi-caret-right"></i></button>
+                    <button id="nextYear"><i class="bi bi-caret-right-fill"></i></button>
+                </div>
+                <div class="weekdays">
+                    <div>Dom</div> <div>Seg</div> <div>Ter</div> <div>Qua</div>
+                    <div>Qui</div> <div>Sex</div> <div>Sáb</div>
+                </div>
+                <div class="days"></div>
+            </div>
+            <div class="agenda-container">
+                <!-- Card de Adicionar Compromissos -->
+                <div class="agenda">
+                    <h3 id="selectedDate"></h3>
+                    <input type="text" id="newAppointment" placeholder="Adicione um Compromisso">
+                    <button onclick="addAppointment()">Adicionar</button>
+                </div>
+        
+                <!-- Lista de Compromissos -->
+                <div class="commitments">
+                    <h3>Compromissos</h3>
+                    <ul id="appointments"></ul>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="js/agenda.js" type="module"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/frontier.js"></script>
+    <script src="js/notification.js"></script>
+    <script src="js/user.js"></script>
+</body>
+</html>
