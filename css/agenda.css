@@ -163,3 +163,61 @@ button {
 .delete-btn:hover {
     color: #d99a0b;
 }
+
+@media (max-width: 1580px) {
+    .containere{
+        display: block;
+    }
+
+    .calendar{
+        width: 100%;
+    }
+
+    .agenda-container{
+        width: 100%;
+    }
+}
+
+@media (max-width: 875px) {
+    .days div{
+        padding: 10px;
+        font-size: 20px;
+    }
+
+    .calendar{
+        height: 60vh;
+    }
+}
+
+@media (max-width: 565px) {
+    .days div{
+        font-size: 15px;
+    }
+
+    .calendar{
+        height: 50vh;
+    }
+
+    .header{
+        font-size: 12px;
+    }
+
+    .weekdays{
+        font-size: 10px;
+    }
+
+    button{
+        padding: 5px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 450px) {
+    .calendar{
+        height: 40vh;
+    }
+
+    input{
+        font-size: 10px;
+    }
+}
