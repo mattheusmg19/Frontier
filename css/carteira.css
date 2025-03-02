@@ -197,6 +197,60 @@ th {
     margin: 2px;
 }
 
+@media (max-width: 480px) {
+    .filters{
+        display: none;
+    }
+
+    .card-container{
+        width: 100%;
+        justify-content: space-between;
+        gap: 5px;
+    }
+
+    .card h3{
+        font-size: 12px;
+    }
+
+    .card p{
+        font-size: 18px;
+    }
+
+    .card{
+        padding: 10px;
+        width: 300px;
+    }
+
+    #transacao-form{
+        display: block;
+        width: 100%;
+    }
+
+    #transacao-form label{
+        width: 100%;
+    }
+
+    input, select, button{
+        width: 100%;
+    }
+
+    h5{
+        margin-top: 10px;
+    }
+
+    th{
+        font-size: 12px;
+    }
+
+    td{
+        font-size: 8px;
+    }
+
+    td i{
+        font-size: 8px;
+    }
+}
+
 #none{
     color: #01012c;
 }
