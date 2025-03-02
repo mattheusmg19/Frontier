@@ -6,7 +6,7 @@
 }
 
 body{
-    background-image: url('/img/backlogin.png');
+    background-image: url('img/backlogin.png');
     color: white;
     font-family: 'outfit', sans-serif;
     user-select: none;
