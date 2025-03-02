@@ -82,3 +82,12 @@ self.addEventListener("push", function(event) {
     self.registration.showNotification("Frontier", options)
   );
 });
+
+self.addEventListener("install", (event) => {
+  self.skipWaiting(); // Faz o novo Service Worker ativar imediatamente
+});
+
+self.addEventListener("activate", (event) => {
+  clients.claim(); // Faz os clientes usarem a nova versão imediatamente
+});
+
