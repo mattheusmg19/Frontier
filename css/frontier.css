@@ -99,3 +99,9 @@ p strong span{
 .mattDe{
     color: white;
 }
+
+@media (max-width: 1000px) {
+    .popup{
+        width: 90%;
+    }
+}
