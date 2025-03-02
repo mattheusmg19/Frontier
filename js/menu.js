@@ -18,11 +18,11 @@ menuItem.forEach((item)=>
 var btnExp = document.querySelectorAll('#btn-exp');
 var menuSide = document.querySelectorAll('.menu-lateral');
 
-// ✅ Adiciona a classe "expandir" ao carregar a página
-window.addEventListener('DOMContentLoaded', function() {
-    menuSide.forEach(menu => {
-        menu.classList.add('expandir');
-    });
+// ✅ Adiciona a classe "expandir" apenas se a tela for maior que 480px ao carregar a página
+window.addEventListener('DOMContentLoaded', function () {
+    if (window.innerWidth > 480) {
+        menuSide.forEach(menu => menu.classList.add('expandir'));
+    }
 });
 
 // ✅ Mantém a funcionalidade de alternar a classe ao clicar no botão
