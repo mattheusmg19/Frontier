@@ -45,6 +45,12 @@ function toggleColor() {
 
     box.style.color = "white";
 }
+
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js')
+      .then(() => console.log('Service Worker registrado!'))
+      .catch((error) => console.log('Erro no Service Worker:', error));
+}
 </script>
 
 <script src="js/login.js" type="module"></script>
