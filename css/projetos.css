@@ -27,3 +27,19 @@ i.bi-behance{
     margin-bottom: 20px;
     border-radius: 20px;
 }
+
+@media (max-width: 1000px) {
+    .pagina{
+        overflow-y: auto;
+    }
+
+    .pagina #cabeca{
+        line-height: 80px;
+        align-items: center;
+    }
+
+    .iframes{
+        margin-top: 0;
+        height: 100%;
+    }
+}
