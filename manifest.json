@@ -7,10 +7,33 @@
   "background_color": "#ffffff",
   "theme_color": "#000000",
   "orientation": "portrait",
-  "description": "Frontier - Seu app inovador para Gestão!",
+  "description": "Frontier - Seu app inovador para XYZ!",
   "launch_handler": {
     "client_mode": "navigate"
   },
+  "screenshots": [
+    {
+      "src": "screenshot1.png",
+      "type": "image/png",
+      "sizes": "1080x1920"
+    },
+    {
+      "src": "screenshot2.png",
+      "type": "image/png",
+      "sizes": "1080x1920"
+    }
+  ],
+  "categories": ["productivity", "utilities", "business"],
+  "dir": "ltr",
+  "iarc_rating_id": "123456",
+  "lang": "pt-BR",
+  "prefer_related_applications": false,
+  "scope": "/",
+  "scope_extensions": [
+    {
+      "origin": "https://mattheusmg19.github.io/Frontier"
+    }
+  ],
   "icons": [
     {
       "src": "icon-192x192.png",
