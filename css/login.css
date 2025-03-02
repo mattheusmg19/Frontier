@@ -17,17 +17,17 @@ body{
     color: #01012c; /* Cor do texto ao selecionar */
 }
 
-.container{
+
+.login{
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     margin: 0;
-}
 
-.login{
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 20px;
     background-color: #0f0f41;
     height: 400px;
@@ -38,7 +38,8 @@ body{
 }
 
 label {
-    width: 27vw;
+    width: 25vw;
+    margin-left: -15px;
 }
 
 label h5{
@@ -46,7 +47,7 @@ label h5{
 }
 
 input{
-    width: 500px;
+    width: 100%;
     background-color: #2a2a5d;
     border: none;
     padding: 10px 8px;
@@ -64,6 +65,7 @@ button{
     cursor: pointer;
     border-radius: 4px;
     font-size: 16px;
+    margin-bottom: 20px;
 }
 
 h2{
