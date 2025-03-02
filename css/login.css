@@ -12,6 +12,10 @@ body{
     user-select: none;
 }
 
+input, button{
+    outline: solid 1px #0f0f41;
+}
+
 ::selection {
     background-color: #F7B40D; /* Cor de fundo ao selecionar */
     color: #01012c; /* Cor do texto ao selecionar */
