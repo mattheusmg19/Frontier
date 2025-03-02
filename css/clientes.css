@@ -154,5 +154,8 @@ label h5{
     .cliente-item{
         margin-top: 20px;
     }
+    .modal-content{
+        width: 90%;
+    }
 }
 
