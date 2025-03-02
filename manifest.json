@@ -3,8 +3,8 @@
   "short_name": "Frontier",
   "description": "Uma aplicação PWA para a plataforma Frontier.",
   "id": "/Frontier/",
-  "start_url": "/Frontier/index.html?source=pwa",
-  "scope": "/Frontier/",
+  "start_url": "/index.html",
+  "scope": "/",
   "scope_extensions": [
     { "origin": "https://mattheusmg19.github.io" }
   ],
