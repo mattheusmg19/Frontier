@@ -35,8 +35,27 @@ btnExp.forEach(btn => {
 });
 
 
-//notificações
+//tela inteira
+function entrarEmTelaCheia() {
+    let elem = document.documentElement;
 
+    if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+    } else if (elem.mozRequestFullScreen) { // Firefox
+        elem.mozRequestFullScreen();
+    } else if (elem.webkitRequestFullscreen) { // Chrome, Safari e Opera
+        elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) { // Internet Explorer
+        elem.msRequestFullscreen();
+    }
+}
 
+// Tentar ativar o fullscreen ao carregar a página
+document.addEventListener("DOMContentLoaded", () => {
+    entrarEmTelaCheia();
+});
 
-//user
+document.addEventListener("click", () => {
+    entrarEmTelaCheia();
+}, { once: true }); // Apenas no primeiro clique
+
