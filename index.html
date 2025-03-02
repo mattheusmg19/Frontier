@@ -26,6 +26,12 @@
         </div>
     </div>
 <script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("/sw.js")
+    .then((reg) => console.log("Service Worker registrado!", reg))
+    .catch((err) => console.error("Erro no Service Worker:", err));
+}
+    
 function toggleColor() {
     const box = document.querySelector('.exibir-senha');
     const text = box.querySelector('h5');
@@ -44,12 +50,6 @@ function toggleColor() {
     }
 
     box.style.color = "white";
-}
-
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js')
-      .then(() => console.log('Service Worker registrado!'))
-      .catch((error) => console.log('Erro no Service Worker:', error));
 }
 </script>
 
