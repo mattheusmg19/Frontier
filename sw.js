@@ -16,6 +16,7 @@ self.addEventListener("install", function(event) {
       return cache.addAll(FILES_TO_CACHE);
     })
   );
+  self.skipWaiting(); // Força a ativação imediata do novo Service Worker
 });
 
 // Ativação do Service Worker e remoção de caches antigos
@@ -32,13 +33,19 @@ self.addEventListener("activate", function(event) {
       );
     })
   );
+  self.clients.claim(); // Garante que o SW atualizado seja ativado imediatamente
 });
 
-// Interceptação de requisições para servir arquivos do cache
+// Interceptação de requisições para servir arquivos do cache e armazenar novos arquivos dinamicamente
 self.addEventListener("fetch", function(event) {
   event.respondWith(
     caches.match(event.request).then(function(response) {
-      return response || fetch(event.request);
+      return response || fetch(event.request).then(function(fetchResponse) {
+        return caches.open(CACHE_NAME).then(function(cache) {
+          cache.put(event.request, fetchResponse.clone());
+          return fetchResponse;
+        });
+      });
     })
   );
 });
@@ -77,3 +84,14 @@ self.addEventListener("push", function(event) {
     self.registration.showNotification("Frontier", options)
   );
 });
+
+// Registrar atualização periódica se suportado pelo navegador
+if ("periodicSync" in self.registration) {
+  self.registration.periodicSync.register("sync-content", {
+    minInterval: 24 * 60 * 60 * 1000 // 1 dia
+  }).then(() => {
+    console.log("Periodic Sync registrado com sucesso!");
+  }).catch((err) => {
+    console.error("Erro ao registrar Periodic Sync:", err);
+  });
+}
