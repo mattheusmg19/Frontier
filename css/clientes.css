@@ -143,3 +143,16 @@ label h5{
     font-size: 16px;
     cursor: pointer;
 }
+
+@media (max-width: 1000px) {
+    .ajusteTopo{
+        align-items: center;
+    }
+    .itens label{
+        display: none;
+    }
+    .cliente-item{
+        margin-top: 20px;
+    }
+}
+
