@@ -107,3 +107,49 @@ button{
     border-radius: 5px;
 }
 
+@media (max-width:1290px) {
+    .inputs input, textarea{
+        font-size: 15px;
+    }
+
+    button#add-task, button#clear-tasks, button.toggle-btn, button.delete-btn{
+        font-size: 14px;
+        padding: 5px;
+    }
+
+    .item-status{
+        font-size: 15px;
+    }
+
+    .inputs h5{
+        font-size: 20px;
+    }
+
+    .status h2{
+        font-size: 20px;
+    }
+}
+
+@media (max-width:1200px) {
+    .cards{
+        display: block;
+        width: 100%;
+    }
+
+    .inputs, .status{
+        width: 100%;
+        height: 70%;
+        overflow: auto;
+    }
+
+    .status{
+        margin: 10px 0;
+    }
+}
+
+@media (max-width:1050px) {
+    .item-status{
+        font-size: 12px;
+    }
+}
+
