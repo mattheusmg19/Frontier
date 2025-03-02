@@ -1,49 +1,50 @@
 {
-  "id": "com.frontier.app",
   "name": "Frontier",
   "short_name": "Frontier",
-  "start_url": "/Frontier/",
+  "description": "Uma aplicação PWA para a plataforma Frontier.",
+  "id": "/Frontier/",
+  "start_url": "/Frontier/index.html",
+  "scope": "/Frontier/",
   "display": "standalone",
+  "orientation": "portrait-primary",
   "background_color": "#ffffff",
   "theme_color": "#000000",
-  "orientation": "portrait",
-  "description": "Frontier - Seu app inovador para XYZ!",
-  "launch_handler": {
-    "client_mode": "navigate"
-  },
-  "screenshots": [
-    {
-      "src": "screenshot1.png",
-      "type": "image/png",
-      "sizes": "1080x1920"
-    },
-    {
-      "src": "screenshot2.png",
-      "type": "image/png",
-      "sizes": "1080x1920"
-    }
-  ],
-  "categories": ["productivity", "utilities", "business"],
   "dir": "ltr",
-  "iarc_rating_id": "123456",
   "lang": "pt-BR",
-  "prefer_related_applications": false,
-  "scope": "/",
-  "scope_extensions": [
-    {
-      "origin": "https://mattheusmg19.github.io/Frontier"
-    }
-  ],
   "icons": [
     {
-      "src": "icon-192x192.png",
+      "src": "/Frontier/icon-192x192.png",
       "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/Frontier/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/Frontier/screenshot1.png",
+      "sizes": "1080x1920",
       "type": "image/png"
     },
     {
-      "src": "icon-512x512.png",
-      "sizes": "512x512",
+      "src": "/Frontier/screenshot2.png",
+      "sizes": "1080x1920",
       "type": "image/png"
     }
-  ]
+  ],
+  "permissions": [
+    "notifications",
+    "background-sync"
+  ],
+  "categories": ["utilities", "productivity"],
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "launch_handler": {
+    "client_mode": "auto"
+  }
 }
