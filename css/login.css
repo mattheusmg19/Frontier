@@ -6,7 +6,7 @@
 }
 
 body{
-    background-color: #01012c;
+    background-color: url(/img/backlogin.png);
     color: white;
     font-family: 'outfit', sans-serif;
     user-select: none;
@@ -121,4 +121,18 @@ h4{
     border-radius: 4px;
 }
 
+@media (max-width: 1230px) {
+    .login{
+        width: 50%;
+    }
 
+    label{
+        width: 80%;
+    }
+}
+
+@media (max-width: 690px) {
+    .login{
+        width: 80%;
+    }
+}
