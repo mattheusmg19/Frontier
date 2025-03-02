@@ -45,4 +45,8 @@ i.bi-behance{
         height: 100%;
         width: 100%;
     }
+
+    .iframes iframe{
+        width: 320px;
+    }
 }
