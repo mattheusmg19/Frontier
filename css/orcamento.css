@@ -245,3 +245,63 @@ th {
             visibility: hidden;
         }
 }
+
+@media (max-width: 1651px) {
+    h5{
+        margin-top: 5px;
+    }
+}
+
+@media (max-width: 1530px) {
+    .box-box{
+        display: block;
+    }
+    .box{
+        width: 100%;
+        margin: 10px 0;
+    }
+    .pagina{
+        display: block;
+    }
+    #detalhes{
+        width: 100%;
+    }
+    #table{
+        width: 100%;
+        margin-top: 70px;
+    }
+
+    .rodapés{
+        display: flex;
+        justify-content: center;
+        margin-top: 360px;
+    }
+
+    .imprimir{
+        margin-right: 0;
+        display: none;
+    }
+    
+    .PDF{
+        margin-right: 0;
+        display: none;
+    }
+    
+    .IMG{
+        margin-right: 0;
+        display: none;
+    }
+    
+    .limparTudo{
+        margin-right: 5px;
+    }
+    
+    #dataH{
+        margin-right: 0;
+        display: none;
+    }
+    
+    #total-table{
+        height: 40px;
+    }    
+}
